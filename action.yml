@@ -1,0 +1,23 @@
+name: GitHub Contributions Generator
+description: Generates github activity for flex purpose
+author: KonradLinkowski
+
+inputs:
+  GIT_NAME:
+    description: 'Your git user name'
+    required: true
+  GIT_EMAIL:
+    description: 'Your git user email'
+    required: true
+  COMMITS:
+    description: 'Number of commits to generate'
+    default: 20
+    required: false
+
+branding:
+  color: yellow
+  icon: activity
+
+runs:
+  using: node12
+  main: index.js

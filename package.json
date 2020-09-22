@@ -1,0 +1,13 @@
+{
+  "name": "github-contributions-generator",
+  "version": "1.0.0",
+  "description": "Generates github activity for flex purpose",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Konrad Linkowski",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.5",
+    "actions-toolkit": "^6.0.0"
+  }
+}
