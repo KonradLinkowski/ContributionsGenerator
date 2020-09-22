@@ -37,7 +37,7 @@ Toolkit.run(
       }
       await push(tools)
     } catch (err) {
-      tools.log.debug("Something went wrong")
+      tools.log.error("Something went wrong")
       return tools.exit.failure(err)
     }
     tools.exit.success("Pushed to remote repository")
