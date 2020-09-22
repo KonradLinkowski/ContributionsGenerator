@@ -6,7 +6,7 @@ module.exports =
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 const core = __webpack_require__(2186)
-const fs = __webpack_require__(4865)
+const { appendFile } = __webpack_require__(5747).promises
 const { Toolkit } = __webpack_require__(7045)
 
 const GIT_NAME = core.getInput("GIT_NAME")
@@ -20,8 +20,8 @@ const setUser = async tools => {
 
 const getMessage = () => `Contribution ${new Date().toISOString()}`
 
-const appendFile = async message => {
-  fs.appendFile("./README.md", message)
+const appendREADME = async message => {
+  await appendFile("./README.md", message)
 }
 
 const commitFile = async (tools, message) => {
@@ -39,7 +39,7 @@ Toolkit.run(
     try {
       await setUser(tools)
       for (let i = 0; i < COMMITS; i += 1) {
-        await appendFile(message)
+        await appendREADME(message)
         await commitFile(tools, message)
       }
       await push()
@@ -15084,14 +15084,6 @@ function wrappy (fn, cb) {
 /***/ ((module) => {
 
 module.exports = eval("require")("encoding");
-
-
-/***/ }),
-
-/***/ 4865:
-/***/ ((module) => {
-
-module.exports = eval("require")("fs/promises");
 
 
 /***/ }),

@@ -1,5 +1,5 @@
 const core = require("@actions/core")
-const fs = require("fs/promises")
+const { appendFile } = require("fs").promises
 const { Toolkit } = require("actions-toolkit")
 
 const GIT_NAME = core.getInput("GIT_NAME")
@@ -13,8 +13,8 @@ const setUser = async tools => {
 
 const getMessage = () => `Contribution ${new Date().toISOString()}`
 
-const appendFile = async message => {
-  fs.appendFile("./README.md", message)
+const appendREADME = async message => {
+  await appendFile("./README.md", message)
 }
 
 const commitFile = async (tools, message) => {
@@ -32,7 +32,7 @@ Toolkit.run(
     try {
       await setUser(tools)
       for (let i = 0; i < COMMITS; i += 1) {
-        await appendFile(message)
+        await appendREADME(message)
         await commitFile(tools, message)
       }
       await push()
