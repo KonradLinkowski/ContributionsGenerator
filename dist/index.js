@@ -42,7 +42,7 @@ Toolkit.run(
         await appendREADME(message)
         await commitFile(tools, message)
       }
-      await push()
+      await push(tools)
     } catch (err) {
       tools.log.debug("Something went wrong")
       return tools.exit.failure(err)
